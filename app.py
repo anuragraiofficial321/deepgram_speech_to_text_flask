@@ -38,6 +38,7 @@ def configure_deepgram():
         encoding="linear16",
         channels=1,
         sample_rate=16000,
+        # model="nova-2"
     )
     dg_connection.start(options)
 
@@ -56,12 +57,14 @@ def start_transcription_loop():
             microphone = start_microphone()
 
             def on_message(self, result, **kwargs):
+                print("Result",result)
                 transcript = result.channel.alternatives[0].transcript
                 if len(transcript) > 0:
+                    # final_transcipt=final_transcipt+transcript
+                    print("transcription",transcript)
                     socketio.emit('transcription_update', {'transcription': transcript})
 
             dg_connection.on(LiveTranscriptionEvents.Transcript, on_message)
-
             # Wait for the transcription to finish
             transcription_event.wait()
             transcription_event.clear()
@@ -101,7 +104,7 @@ def on_disconnect():
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index_simple.html')
 
 @socketio.on('disconnect')
 def handle_disconnect():
@@ -110,6 +113,8 @@ def handle_disconnect():
 @socketio.on('toggle_transcription')
 def toggle_transcription(data):
     global transcribing
+    # global final_transcipt
+    # final_transcipt=''
     action = data.get('action')
 
     if action == 'start' and not transcribing:
@@ -118,6 +123,7 @@ def toggle_transcription(data):
         socketio.start_background_task(target=start_transcription_loop)
     elif action == 'stop' and transcribing:
         # Stop transcription
+        # print("total",final_transcipt)
         transcribing = False
         transcription_event.set()
 

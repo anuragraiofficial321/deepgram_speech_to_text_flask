@@ -218,3 +218,72 @@ h1 {
   left: 20px;
   top: -144px;
 }
+
+
+/* this is for index_simple */
+
+.transcription-container {
+  text-align: center;
+}
+
+.transcription-text {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.captions {
+  color: white;
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.action-button {
+  display: inline-block;
+  padding: 20px 40px; /* Increased button size */
+  font-size: 18px;
+  margin: 10px;
+  border-radius: 10px;
+  background-color: #47aca9;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.action-button:hover {
+  background-color: #13ef95;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+}
+
+.captions {
+  color: white;
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.action-button {
+  display: inline-block;
+  padding: 20px 40px;
+  font-size: 18px;
+  margin: 10px;
+  border-radius: 10px;
+  background-color: #47aca9;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.action-button:hover {
+  background-color: #13ef95;
+}

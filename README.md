@@ -1,3 +1,6 @@
+# Run the file 
+flask run -p 8080
+
 # Live Flask Starter
 
  [![Discord](https://dcbadge.vercel.app/api/server/xWRaCDBtW4?style=flat)](https://discord.gg/xWRaCDBtW4)
